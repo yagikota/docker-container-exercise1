@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "8080:8888"
+    volumes:
+      - ./captured:/captured
+  client:
+    container_name: client
+    build:
+      context: .
+      dockerfile: Dockerfile.client

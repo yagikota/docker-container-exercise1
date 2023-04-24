@@ -12,7 +12,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer conn.Close()
 
 	str := "Hello!"
 	_, err = conn.Write([]byte(str))

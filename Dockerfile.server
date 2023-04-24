@@ -17,6 +17,5 @@ COPY --from=go-builder /go/src/github.com/docker-container-exercise1/server serv
 # tcpdump
 RUN apk add --update tcpdump
 RUN mkdir captured
-# RUN tcpdump -i eth0 -w "/captured/$(date +'%Y%m%d_%H%M%S').pcap"
 
 ENTRYPOINT ["./server/main"]

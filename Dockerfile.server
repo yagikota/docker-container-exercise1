@@ -17,5 +17,6 @@ COPY --from=go-builder /go/src/github.com/docker-container-exercise1/server serv
 # tcpdump
 RUN apk add --update tcpdump
 RUN mkdir captured
+RUN mkdir captured/server
 
 ENTRYPOINT ["./server/main"]

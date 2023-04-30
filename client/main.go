@@ -1,33 +1,32 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"log"
-	"net"
 	"net/http"
+	"time"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	conn, err := net.Dial("tcp", "server:8080")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	str := "Hello!"
-	_, err = conn.Write([]byte(str))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	buf := make([]byte, 1024)
-	count, err := conn.Read(buf)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(string(buf[:count]))
+type Response struct {
+	Message string `json:"message"`
 }
 
 func main() {
-	http.HandleFunc("/send-request", handler)
-	http.ListenAndServe(":8081", nil)
+	url := "http://server:8080"
+
+	response, err := http.Get(url)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	var res Response
+	err = json.NewDecoder(response.Body).Decode(&res)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	time.Sleep(5 * time.Second)
+	fmt.Println(res.Message)
 }

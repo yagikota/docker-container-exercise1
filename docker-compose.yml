@@ -9,7 +9,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./captured:/captured
+      - ./captured/server:/captured/server
   client:
     container_name: client
     build:
@@ -17,3 +17,5 @@ services:
       dockerfile: Dockerfile.client
     ports:
       - "8081:8081"
+    volumes:
+      - ./captured/client:/captured/client

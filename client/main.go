@@ -1,32 +1,26 @@
+// TCPクライアント client.go
 package main
 
-import (
-	"encoding/json"
-	"fmt"
-	"net/http"
-	"time"
-)
+// import (
+// 	"fmt"
+// 	"log"
+// 	"net"
+// )
 
-type Response struct {
-	Message string `json:"message"`
-}
+// func main() {
+// 	// tcp://127.0.0.1:8888に接続する
+// 	conn, err := net.Dial("tcp", "localhost:8080")
+// 	if err != nil {
+// 		log.Fatalf("%sに接続できませんでした", conn.RemoteAddr().String())
+// 	}
+// 	defer conn.Close()
 
-func main() {
-	url := "http://server:8080"
+// 	// メッセージを送信する
+// 	msg := fmt.Sprintf("Hello, %s\n", conn.RemoteAddr())
+// 	conn.Write([]byte(msg))
 
-	response, err := http.Get(url)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	var res Response
-	err = json.NewDecoder(response.Body).Decode(&res)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	time.Sleep(5 * time.Second)
-	fmt.Println(res.Message)
-}
+// 	// メッセージを受信する
+// 	res := make([]byte, 1024)
+// 	n, _ := conn.Read(res)
+// 	fmt.Println(string(res[:n]))
+// }

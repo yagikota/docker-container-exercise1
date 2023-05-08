@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -14,7 +15,7 @@ type Response struct {
 }
 
 func greet(c echo.Context) error {
-	message := fmt.Sprintf("Hello, World!, realIP: %s, Path: %s", c.RealIP(), c.Path())
+	message := fmt.Sprintf("Hello, World!, Current Time:%s", time.Now().Format("2006/01/02 15:04:05"))
 	response := Response{Message: message}
 	return c.JSON(http.StatusOK, response)
 }

@@ -16,7 +16,7 @@ services:
       resources:
         limits:
           cpus: '0.50' # 0.50 (50% of a single core) of available processing time (CPU)
-          memory: 1g # https://docs.docker.com/compose/compose-file/11-extension/#specifying-byte-values
+          memory: 2g # https://docs.docker.com/compose/compose-file/11-extension/#specifying-byte-values
     volumes:
       - ./captured/server:/captured/server
 
@@ -33,7 +33,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.50'
+          cpus: '0.25'
           memory: 1gb
 
 # https://docs.docker.com/compose/compose-file/06-networks/

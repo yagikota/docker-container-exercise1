@@ -19,4 +19,9 @@ RUN apk add --update tcpdump
 RUN mkdir captured
 RUN mkdir captured/server
 
+# sysbench
+RUN apk add sysbench
+RUN mkdir benchmark
+RUN mkdir benchmark/server
+
 ENTRYPOINT ["./server/main"]

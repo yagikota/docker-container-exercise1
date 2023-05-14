@@ -2,7 +2,12 @@ module github.com/yagikota/docker-container-exercise1/server
 
 go 1.20
 
-require github.com/labstack/echo/v4 v4.10.2
+require (
+	github.com/caarlos0/env/v8 v8.0.0
+	github.com/disgoorg/log v1.2.0
+	github.com/joho/godotenv v1.5.1
+	github.com/labstack/echo/v4 v4.10.2
+)
 
 require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect

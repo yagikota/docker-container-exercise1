@@ -24,3 +24,5 @@ go.work
 
 benchmark/client/*.txt
 benchmark/server/*.txt
+
+*.pem

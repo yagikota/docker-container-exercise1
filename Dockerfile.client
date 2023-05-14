@@ -14,6 +14,10 @@ FROM alpine
 
 COPY --from=go-builder /go/src/github.com/docker-container-exercise1/client client
 
+# Append CA certificate
+RUN cat client/crt/rootCA.pem >> /etc/ssl/certs/ca-certificates.crt
+
+
 # sysbench
 RUN apk add sysbench
 RUN mkdir benchmark

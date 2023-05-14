@@ -14,14 +14,14 @@ FROM alpine
 
 COPY --from=go-builder /go/src/github.com/docker-container-exercise1/server server
 
+WORKDIR /server
 # tcpdump
 RUN apk add --update tcpdump
 RUN mkdir captured
 RUN mkdir captured/server
 
 # sysbench
-RUN apk add sysbench
-RUN mkdir benchmark
-RUN mkdir benchmark/server
-
-ENTRYPOINT ["./server/main"]
+# RUN apk add sysbench
+# RUN mkdir benchmark
+# RUN mkdir benchmark/server
+ENTRYPOINT ["./main"]

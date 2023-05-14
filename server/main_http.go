@@ -8,6 +8,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/yagikota/docker-container-exercise1/server/config"
 )
 
 type Response struct {
@@ -25,8 +26,9 @@ func main() {
 	e.Use(middleware.Logger())
 	e.GET("/", greet)
 
-	svr := &http.Server{Addr: ":8080", Handler: e}
+	svr := &http.Server{Addr: ":443", Handler: e}
 	svr.SetKeepAlivesEnabled(false) // Keep Aliveの無効
 
-	log.Fatal(svr.ListenAndServe())
+	cfg := config.LoadConfig()
+	log.Fatal(svr.ListenAndServeTLS(cfg.TLS.CertFile, cfg.TLS.KeyFile))
 }

@@ -14,7 +14,7 @@ type Response struct {
 }
 
 func greet(c echo.Context) error {
-	url := "http://server:8080"
+	url := "https://server:443"
 	client := resty.New()
 	resp, err := client.R().
 	EnableTrace().
